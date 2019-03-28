@@ -1,11 +1,22 @@
 from selenium import webdriver
 
-def get_browser_page_source():
-    browser = webdriver.Chrome(executable_path="./chromedriver.exe")
-    browser.get('https://www.dba.dk/')
-    search_field = browser.find_elements_by_id('searchField')
-    search_field.send_keys('tv')
-    search_field.submit()
+def search_reddit(search_term,n):
+    url = 'https://old.reddit.com/'
+    browser = webdriver.Chrome()
+    browser.get(url)
+    form = browser.find_element_by_id("search")
+    search_bar = form.find_elements_by_tag_name('input')[0]
+    search_bar.send_keys(search_term)
+    form.submit()
 
-if __name__ == '__main__':
-    get_browser_page_source()
+    posts_per_page = 22
+    pages = n//(posts_per_page+1)+1
+    html_posts = []
+
+    for _ in range(pages):
+        html_posts_container = browser.find_element_by_id("siteTable")
+        html_cur_page_posts = html_posts_container.find_elements_by_class_name("thing")
+        html_posts += [e.get_attribute('innerHTML') for e in html_cur_page_posts]
+        browser.find_element_by_link_text("next ›").click()
+
+    html_posts = html_posts[:n]
