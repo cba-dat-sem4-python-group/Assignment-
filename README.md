@@ -1,3 +1,4 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cba-dat-sem4-python-group/Assignment-7/master?filepath=Assignment-7.ipynb)
 # Assignment 7 Webscraping
 
 ## Part 1
