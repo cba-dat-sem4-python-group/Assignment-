@@ -1,17 +1,33 @@
-# Assignment 7
-This assignment requires you to work with selenium, BeautifullSoup and possibly regular expressions
+# Assignment 7 Webscraping
 
-Hand-in:
-- All the code in a .py file
-## Part 1: Preparing data
-- Use selenium to go to dba.dk with any search phrase
-- Find all products added today
-- Find only those from 'København og omegn'
-- create a .py file containing above function as a module that will return the browser page source.
-## Part 2: Extracting the data
-- Use BeautifulSoup to extract all the products in a different function in the module (see selenium_krak.py for example)
-- Make a list with tuples of description, year (if available), price, image url and url to details page.
-- Sort the products by price
-- Return an html table with all the data
-## Part 3:
-- Add functionality to get the phone number for each product.
+## Part 1
+
+* You must first retrieve the top 100 scoring posts from [https://old.reddit.com/top/?sort=top&t=all](https://old.reddit.com/top/?sort=top&t=all). You will need to walk through multiple pages, using the `next` button.
+* Save the links in a list of `Post` objects. The `Post` object must contain:
+    * The id of the post.
+    * The title of the post.
+    * The exact score of the post.
+    * The subreddit the post was submitted to. 
+
+## Part 2
+
+What are the most popular subreddits in the top 100 posts?
+
+* Find the frequency of all the subreddits in the 100 top posts. Store them in a dictionary where `subreddit=>frequency`.
+* Sort the dictionary by descending value. 
+* Plot the frequencies on a bar chart, where the `y`-axis is the frequency, and the `x`-axis is the subreddit name.
+
+## Part 3
+
+Search reddit using selenium.
+
+Create a function that can retrieve the top `n` search results (posts) given a `search_term`.
+
+```python
+def search_reddit(search_term, n):
+   pass
+```
+
+*remember to use `old.reddit.com` to aviod SPA.*
+
+If you get stuck, you can check out our solution [here](https://github.com/Thomas-Rosenkrans-Vestergaard/thomas-kristoffer-assignment-solution).
